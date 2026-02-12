@@ -178,7 +178,10 @@ export default function Sidebar({ onSelectChannel, onChannelsLoaded, selectedCha
             handleChannelUpdate(res.data);
             setNewChannelName('');
             setIsCreating(false);
-        } catch (err) { console.error(err); }
+        } catch (err) {
+            console.error(err);
+            alert(err.response?.data?.message || err.message || "Failed to create channel");
+        }
     };
 
     const handleChannelUpdate = (newChannel) => {
